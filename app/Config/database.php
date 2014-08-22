@@ -6,18 +6,18 @@ class DATABASE_CONFIG {
 		'datasource' => 'Database/Mysql',
 		'persistent' => false,
 		'host' => 'localhost',
-		'login' => '',
-		'password' => '',
-		'database' => '',
+		'login' => 'guideside',
+		'password' => 'CaQBPHs9Mf9pqebe',
+		'database' => 'guide_dev',
     'encoding' => 'UTF8',
 	);
 	var $test = array(
 		'datasource' => 'Database/Mysql',
 		'persistent' => false,
 		'host' => 'localhost',
-		'login' => '',
-		'password' => '',
-		'database' => '',
+		'login' => 'guideside',
+		'password' => 'CaQBPHs9Mf9pqebe',
+		'database' => 'guide_dev',
     'encoding' => 'UTF8',
 	);
   var $array = array(
