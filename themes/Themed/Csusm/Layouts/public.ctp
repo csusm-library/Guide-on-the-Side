@@ -35,9 +35,9 @@
 
 		//echo $this->Html->meta('icon');
     echo $this->element('formalize_css');
-    echo $this->Html->css('https://netdna.bootstrapcdn.com/bootswatch/2.1.1/cosmo/bootstrap.no-icons.min.css');
-    echo $this->Html->css('https://netdna.bootstrapcdn.com/fos/font-awesome.css');
-    echo $this->Html->css('http://fonts.googleapis.com/css?family=PT+Sans|Crimson+Text|Droid+Sans:regular,bold');
+    echo $this->Html->css('//netdna.bootstrapcdn.com/twitter-bootstrap/2.2.2/css/bootstrap.no-icons.min.css');
+    echo $this->Html->css('//netdna.bootstrapcdn.com/font-awesome/3.0.2/css/font-awesome.css');
+    echo $this->Html->css('//fonts.googleapis.com/css?family=PT+Sans|Crimson+Text|Droid+Sans:regular,bold');
 
     echo $this->element('jquery_ui_css');
 
@@ -66,10 +66,10 @@
 
 
     <?php
-    echo $this->Html->script('http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.js');
+    echo $this->Html->script('//ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.js');
     echo $this->Html->script('jquery_plugins/jquery.doubletap/lib/jquery.doubletap');
     // jQuery Tools must be loaded before jQuery UI.
-    echo $this->Html->script('http://cdn.jquerytools.org/1.2.5/all/jquery.tools.min.js');
+    echo $this->Html->script('//cdn.jquerytools.org/1.2.5/all/jquery.tools.min.js');
     echo $this->element('jquery_ui');
     echo $this->Html->script('ui_tools_conflict_fix');
 

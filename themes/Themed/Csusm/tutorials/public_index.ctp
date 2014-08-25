@@ -1,7 +1,6 @@
-<h3><?php echo Configure::read('user_config.application_title') ?> [beta]</h3>
-<ul>
+<h1><?php echo Configure::read('user_config.application_title') ?></h1>
+<ul class="unstyled">
 <?php
-
   foreach($tutorials as $tutorial) {
     echo "<li>";
     echo $this->Html->link(
@@ -16,8 +15,6 @@
     );
     echo "</li>";
   }
-[beta]
   echo $this->element('paging');
 ?>
 </ul>
-[beta]

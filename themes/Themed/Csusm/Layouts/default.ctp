@@ -20,19 +20,19 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-	<?php echo $this->Html->charset(); ?>
-	<title>
-		<?php echo __('Guide on the Side: '); ?>
-		<?php echo $title_for_layout; ?>
-	</title>
+  <?php echo $this->Html->charset(); ?>
+  <title>
+    <?php echo __('Guide on the Side: '); ?>
+    <?php echo $title_for_layout; ?>
+  </title>
   <base href="<?php echo $this->Html->url('/', true) ?>" />
-	<?php
+  <?php
     echo $this->Html->charset('UTF-8');
-		//echo $this->Html->meta('icon');
-    //netdna.bootstrapcdn.com/bootswatch/2.1.1/cosmo/bootstrap.min.css
-    echo $this->Html->css('https://netdna.bootstrapcdn.com/bootswatch/2.1.1/cosmo/bootstrap.no-icons.min.css');
-    echo $this->Html->css('https://netdna.bootstrapcdn.com/fos/font-awesome.css');
-    echo $this->Html->css('https://fonts.googleapis.com/css?family=PT+Sans|Crimson+Text|Droid+Sans:regular,bold');
+    //echo $this->Html->meta('icon');
+
+    echo $this->Html->css('//netdna.bootstrapcdn.com/twitter-bootstrap/2.2.2/css/bootstrap.no-icons.min.css');
+    echo $this->Html->css('//netdna.bootstrapcdn.com/font-awesome/3.0.2/css/font-awesome.css');
+    echo $this->Html->css('//fonts.googleapis.com/css?family=PT+Sans|Crimson+Text|Droid+Sans:regular,bold');
 
     echo $this->element('jquery_ui_css');
 
@@ -43,7 +43,7 @@
     echo $this->element('jquery');
     echo $this->element('formalize_css');
     // jQuery Tools must be loaded first.
-    echo $this->Html->script('https://cdn.jquerytools.org/1.2.5/all/jquery.tools.min.js');
+    echo $this->Html->script('//cdn.jquerytools.org/1.2.5/all/jquery.tools.min.js');
     echo $this->element('jquery_ui');
     echo $this->Html->script('ui_tools_conflict_fix');
 
@@ -53,44 +53,53 @@
 
     echo $this->element('cakephp_js');
 
-		echo $scripts_for_layout;
+    echo $scripts_for_layout;
   ?>
 </head>
 <body>
-  <div id="container">
-    <div id="content">
-      <div id="userinfo">
+<div class="navbar navbar-inverse navbar-static-top">
+  <div class="navbar-inner">
+    <div class="container">
+      <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
       <?php
+      echo $this->Html->link('Guide on the Side', array('controller' => 'tutorials', 'action' => 'index'), array('class' => 'brand'));
+      ?>
+      <div class="nav-collapse collapse">
+        <ul class="nav">
+        <?php
         if ($this->Session->check('Auth.User.username')) {
-          echo "You are logged in as {$this->Session->read('Auth.User.username')}. ";
-          echo '[' . $this->Html->link('Admin index', array('controller' => 'tutorials', 'action' => 'index')) . '] ';
+          echo "<li><a href=\"#\">You are logged in as {$this->Session->read('Auth.User.username')}</a></li>";
+          echo '<li>' . $this->Html->link('Admin index', array('controller' => 'tutorials', 'action' => 'index')) . '</li>';
           if ($show_password_link) {
-            echo '[';
+            echo '<li>';
             echo $this->Html->link('Change password', array('controller' => 'users',
                 'action' => 'edit', $this->Session->read('Auth.User.id')));
-            echo '] ';
+            echo '</li>';
           }
-          echo '[';
+          echo '<li>';
           echo $this->Html->link('Log out', '/logout');
-          echo ']';
+          echo '</li>';
         }
-
-      ?>
+        ?>
+        </ul>
       </div>
-      <?php
-        echo $this->Html->link(
-          //$this->Html->image('gots-banner.jpg', array('alt' => 'Guide on the Side', 'id' => 'QuickHelp')),
-          Configure::read('user_config.application_title'),
-          array('controller' => 'tutorials', 'action' => 'index'),
-          array('escape' => false)
-        );
-			  echo $this->Session->flash();
-			  echo $content_for_layout;
-      ?>
-[beta]
     </div>
   </div>
-
-	<?php echo $this->element('sql_dump'); ?>
+</div>
+<div id="container">
+    <div id="content" class="row">
+      <div class="span12">
+      <?php
+        echo $this->Session->flash();
+        echo $content_for_layout;
+      ?>
+      </div>
+    </div>
+  </div>
+  <?php echo $this->element('sql_dump'); ?>
 </body>
 </html>

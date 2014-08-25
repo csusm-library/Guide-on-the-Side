@@ -1,5 +1,6 @@
 application_title: Guide on the Side
-theme: GuideOnTheSide
+#theme: GuideOnTheSide
+theme: Csusm
 
 database:
   datasource: Database/Mysql

@@ -28,14 +28,15 @@
   <base href="<?php echo $this->Html->url('/', true) ?>" />
 	<?php
     echo $this->Html->charset('UTF-8');
-		//echo $this->Html->meta('icon');
-    echo $this->Html->css('https://netdna.bootstrapcdn.com/bootswatch/2.1.1/cosmo/bootstrap.no-icons.min.css');
-    echo $this->Html->css('https://netdna.bootstrapcdn.com/fos/font-awesome.css');
-    echo $this->Html->css('http://fonts.googleapis.com/css?family=PT+Sans|Crimson+Text|Droid+Sans:regular,bold');
+		echo $this->Html->meta('icon');
+    echo $this->Html->css('//netdna.bootstrapcdn.com/twitter-bootstrap/2.2.2/css/bootstrap.no-icons.min.css');
+    //echo $this->Html->css('//netdna.bootstrapcdn.com/font-awesome/3.0.2/css/font-awesome.css');
+    //echo $this->Html->css('//fonts.googleapis.com/css?family=PT+Sans|Crimson+Text|Droid+Sans:regular,bold');
+    echo "<link rel=\"stylesheet\" type=\"text/css\" href=\"https://biblio.csusm.edu/sites/all/themes/research/stylesheets/styles.php\" />";
 
     echo $this->element('jquery_ui_css');
 
-    echo $this->Html->css('default');
+    //echo $this->Html->css('default');
 
     echo $this->element('autoinclude_css');
 
@@ -54,39 +55,51 @@
 		echo $scripts_for_layout;
   ?>
 </head>
-<body>
-  <div id="container">
-    <div id="content">
-      <div id="userinfo">
+<body id="gos-institution-page">
+<?php
+include("/var/www/d6/sites/all/themes/research/includes/top-menu.php");
+?>
+  <div id="breadcrumb-holder">
+    <div class="breadcrumbs"><a href="http://biblio.csusm.edu/">Library</a> &raquo; <a href="/sideguides/">Guide on the Side</a>
+    </div>
+  </div>
+  <div class="navbar" id="userinfo">
+    <div class="navbar-inner">
       <?php
-        if ($this->Session->check('Auth.User.username')) {
-          echo "You are logged in as {$this->Session->read('Auth.User.username')}. ";
-          if ($show_password_link) {
-            echo '[';
-            echo $this->Html->link('Change password', array('controller' => 'users',
-                'action' => 'edit', $this->Session->read('Auth.User.id')));
-            echo '] ';
-          }
-          echo '[';
-          echo $this->Html->link('Log out', '/logout');
-          echo ']';
+      echo "<ul class=\"nav\">";
+      if ($this->Session->check('Auth.User.username')) {
+        echo "<li><a href=\"https://biblio.csusm.edu/sideguides/admin\">Admin</a></li>";
+        if ($show_password_link) {
+          echo '<li>';
+          echo $this->Html->link('Change password', array('controller' => 'users',
+              'action' => 'edit', $this->Session->read('Auth.User.id')));
+          echo '</li>';
         }
-
+        echo '<li>';
+        echo $this->Html->link('Log out', '/logout');
+        echo '</li>';
+        echo "<li><a href=\"#\">You are logged in as {$this->Session->read('Auth.User.username')}</a></li>";
+      }else{
+        echo "<li><a href=\"https://biblio.csusm.edu/sideguides/login\">Login</a></li>";
+      }
+      echo "</ul>";
       ?>
-      </div>
+    </div>
+  </div>
       <?php
-        echo $this->Html->link(
-          $this->Html->image('gots-banner.jpg', array('alt' => 'Guide on the Side', 'id' => 'QuickHelp')),
-          array('controller' => 'tutorials', 'action' => 'index'),
-          array('escape' => false)
-        );
+        //echo $this->Html->link(
+        //  $this->Html->image('gots-banner.jpg', array('alt' => 'Guide on the Side', 'id' => 'QuickHelp')),
+        //  array('controller' => 'tutorials', 'action' => 'index'),
+        //  array('escape' => false)
+        //);
 			  echo $this->Session->flash();
 			  echo $content_for_layout;
       ?>
-
-    </div>
-  </div>
-
 	<?php echo $this->element('sql_dump'); ?>
+</div>
+</div>
+<br clear="all" />  <?php
+include("/var/www/d6/sites/all/themes/research/includes/footer-menu.php");
+?>
 </body>
 </html>
