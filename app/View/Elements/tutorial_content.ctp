@@ -54,7 +54,7 @@
             && $tutorial['Tutorial']['certificate_email_self']) {
             echo $this->Form->input('certificate_email', array('label' => 'Email address(es):',
                 'placeholder' => 'Email addresses', 'class' => 'certificate_email'));
-            echo "<p class='field-description'>You can enter multiple email addresses separated by commas. If you are doing this for a class, you may need to enter your instructor's email address also.</p>";
+            echo "<p class='field-description'>You can enter multiple email addresses separated by commas. If you are doing this for a class, you may need to enter your instructor's email address also. (Please only click once.)</p>";
         }
 
         if ($tutorial['Tutorial']['certificate'] || $tutorial['FinalQuiz']['certificate']) {
